@@ -69,22 +69,22 @@ let styleStr = "";
 let i = 0;
 (function step(){
   setTimeout(() => {
-    if(content[i] === "\n"){
-      contentStr+="<br>"
-    }else if(content[i] === " "){
-      contentStr+="&nbsp"
-    }else {
-      contentStr+=content[i];
+    if (content[i] === '\n') {
+      contentStr += '<br>';
+    } else if (content[i] === ' ') {
+      contentStr += '&nbsp';
+    } else {
+      contentStr += content[i];
     }
     htmlContentEle.innerHTML = contentStr;
-    styleEle.innerHTML = content.substr(0,i);
+    styleEle.innerHTML = content.substr(0, i);
     window.scrollTo({
-      top:9999,
-      behavior:"instant"
-    })
-    if(i < content.length-1){
+      top: 9999,
+      behavior: 'instant'
+    });
+    if (i < content.length - 1) {
       i++;
       step();
     }
-  }, 50);
+  }, 10);
 })()
