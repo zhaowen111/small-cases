@@ -46,3 +46,4 @@ window.jquery = function (obj) {
     }
   };
 };
+window.$ = window.jquery;
