@@ -1,4 +1,4 @@
-window.jquery = function (obj) {
+window.$ = window.jquery = function (obj) {
   let wrapper;
   let history = obj.history || [null];
   if (typeof obj === 'string') {
@@ -46,4 +46,3 @@ window.jquery = function (obj) {
     }
   };
 };
-window.$ = window.jquery;

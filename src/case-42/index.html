@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no, viewport-fit=cover">
+  <title>Fulgens Navigation</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+  <header class="search-container">
+    <input class="search-box" type="text" placeholder="Enter something...">
+    <button class="search-btn btn" type="button">Search</button>
+  </header>
+  <main class="content">
+  </main>
+  <button class="add-nav-btn btn">+</button>
+  <footer class="footer">
+  </footer>
+  <div class="mask"></div>
+  <div class="pop-window">
+    <input class="add-title-input" type="text" placeholder="Default equals url">
+    <input class="add-url-input" type="url"  placeholder="Enter url">
+    <input class="add-type-input"  placeholder="Enter url type" list="site-type">
+    <input class="nav-id" type="hidden">
+    <datalist id="site-type"></datalist>
+    <button class="add-submit-btn btn" type="button">ok</button>
+  </div>
+  <aside class="nav-context-menu">
+    <button class="underline edit-menu" type="button">edit</button>
+    <button class="underline delete-menu" type="button">delete</button>
+  </aside>
+  <script src="../lib/dom.js"></script>
+  <script src="../lib/utils.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
