@@ -76,7 +76,7 @@ function getNavData(navEl) {
 function renderData(containerEle, data) {
   containerEle.innerHTML = '';
   if (data.size === 0) {
-    containerEle.innerHTML = '没有匹配的数据！';
+    containerEle.appendChild(dom.create(`<div class="empty-search-result">没有匹配的数据！</div>`));
   } else {
     data.forEach((value, key) => {
       const navAreaEl = createNavArea(key);
@@ -296,12 +296,12 @@ let popWindowComp = {
     this.additionNavTypeInputEl.disabled = Boolean(editData);
     this.initForm(editData);
     maskComp.open();
-    this.el.style.bottom = '20%';
+    this.el.classList.add("opened")
     this.opened = true;
   },
   _close() {
     maskComp.close();
-    this.el.style.bottom = '-30%';
+    this.el.classList.remove("opened")
     this.resetAdditionForm();
     this.opened = false;
   },
@@ -322,7 +322,7 @@ let popWindowComp = {
 
     //为打开关闭添加窗口提供键盘支持
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab' && !this.opened && e.path[0].nodeName !== 'INPUT') {
+      if (e.key === 'Tab' && !this.opened ) {//&& e.path[0].nodeName !== 'INPUT'
         e.preventDefault();
         let clickEvent = createPopEvent('click');
         this.addBtnEl.dispatchEvent(clickEvent);
