@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn1">动态加载css</button>
+    <button class="btn2">动态加载js</button>
+    <button class="btn3">动态加载xml</button>
+    <button class="btn4">动态加载json</button>
+    <button class="btn5">动态加载分页数据(点击一次加载一页)</button>
+
+    <script>
+      //动态加载css
+      document.querySelector('.btn1').addEventListener('click', function (e) {
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', (e) => {
+          if (xhr.readyState === 4) {
+            if (
+              (xhr.status >= 200 && xhr.status <= 300) ||
+              xhr.status === 304
+            ) {
+              console.log(xhr.response);
+              let styleEl = document.createElement('style');
+              styleEl.innerHTML = xhr.response;
+              document.body.appendChild(styleEl);
+            }
+          }
+        });
+        xhr.open('GET', 'index.css');
+        xhr.send();
+      });
+      //动态加载js
+      document
+        .querySelector('.btn2')
+        .addEventListener('click', function (e) {
+          let xhr = new XMLHttpRequest();
+          xhr.addEventListener("readystatechange",()=>{
+            if(xhr.readyState === 4){
+              if((xhr.status >= 200 && xhr.status <300) || xhr.status === 304){
+                let js = xhr.response;
+                let scriptEl = document.createElement("script");
+                scriptEl.innerHTML = js;
+                document.body.appendChild(scriptEl);
+              }
+            }
+          });
+          xhr.open("get","main.js");
+          xhr.send();
+        });
+        //动态加载xml
+      document
+        .querySelector('.btn3')
+        .addEventListener('click', function (e) {
+          let xhr = new XMLHttpRequest();
+          xhr.addEventListener("readystatechange",()=>{
+            if(xhr.readyState === 4){
+              if((xhr.status >= 200 && xhr.status <300) || xhr.status === 304){
+                alert(xhr.response);
+              }
+            }
+          });
+          xhr.open("get","4.xml");
+          xhr.send();
+        });
+      //动态加载json
+      document
+        .querySelector('.btn4')
+        .addEventListener('click', function (e) {
+          let xhr = new XMLHttpRequest();
+          xhr.addEventListener("readystatechange",()=>{
+            if(xhr.readyState === 4){
+              if((xhr.status >= 200 && xhr.status <300) || xhr.status === 304){
+                let json= xhr.response;
+                let divEl = document.createElement("div");
+                divEl.innerHTML = json;
+                document.body.appendChild(divEl);
+              }
+            }
+          });
+          xhr.open("get","5.json")
+          xhr.setRequestHeader("name","fulgens")
+          xhr.send()
+        });
+      //动态加载分页
+      let i = 1;
+      document
+        .querySelector('.btn5')
+        .addEventListener('click', function (e) {
+          let xhr = new XMLHttpRequest();
+          xhr.addEventListener("readystatechange",()=>{
+            if(xhr.readyState === 4){
+              if((xhr.status >= 200 && xhr.status <300) || xhr.status === 304){
+                let json= xhr.response;
+                let divEl = document.createElement("div");
+                divEl.innerHTML = json;
+                document.body.appendChild(divEl);
+              }else {
+                if(xhr.status === 404){
+                  alert("没有更多数据了")
+                }
+              }
+            }
+          });
+          xhr.open("get",`page${i++}`);
+          xhr.send();
+        });
+    </script>
+  </body>
+</html>
