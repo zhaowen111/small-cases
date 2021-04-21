@@ -100,28 +100,44 @@ window.dom = {
   each(nodeList, callback) {
     return Array.from(nodeList).forEach(callback);
   },
-  delegate(eventType,container,selector,cb){
-    if(!container instanceof Element){
-      throw new Error("invalid parameter container,need a Element type object");
+  delegate(eventType, container, selector, cb) {
+    if (!container instanceof Element) {
+      throw new Error('invalid parameter container,need a Element type object');
     }
-    const listener = function(e){
-      let matchedElement = getMatchedElement(e.target,selector,container);
-      if(matchedElement !== null) cb(matchedElement,e);
+    const listener = function (e) {
+      let matchedElement = getMatchedElement(e.target, selector, container);
+      if (matchedElement !== null) cb(matchedElement, e);
     };
-    container.addEventListener(eventType,listener);
-    function getMatchedElement(el,selector,root){
-      if(el === root)return null;
-      if(el.matches(selector)){
+    container.addEventListener(eventType, listener);
+    function getMatchedElement(el, selector, root) {
+      if (el === root) return null;
+      if (el.matches(selector)) {
         return el;
-      }else{
-        return getMatchedElement(el.parentNode,selector,root);
+      } else {
+        return getMatchedElement(el.parentNode, selector, root);
       }
     }
   },
-  wrapper(element){
-    if(!element instanceof Element){
+  ajax(method, url, options) {
+    const { success, fail } = options;
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener('readystatechange', () => {
+      if (xhr.readyState === 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+          success(null, xhr.response);
+        } else if (xhr.status >= 400) {
+          fail(null, xhr, xhr.status);
+        }
+      }
+    });
+    xhr.open(method, url);
+    xhr.send(options.data);
+  },
+  wrapper(element) {
+    if (!element instanceof Element) {
       element = document.querySelector(element);
     }
     return element;
   }
 };
+
