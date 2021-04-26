@@ -1,0 +1,1 @@
+(self.webpackChunksmall_case=self.webpackChunksmall_case||[]).push([[166],{951:()=>{let e=document.querySelector("#delegate");dom.delegate("click",e,"button",(e=>{console.log(e),console.log("委托事件触发了")}))}},e=>{"use strict";e(e.s=951)}]);

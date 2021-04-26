@@ -1,7 +1,8 @@
+import "./index.scss"
+
 let htmlContentEle = document.querySelector("#htmlContent");
 let styleEle = document.querySelector("#style");
 let div1 = document.querySelector("#div1");
-
 let content = `
 /* 你好，我叫小赵
 * 给你看个东西

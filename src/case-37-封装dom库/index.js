@@ -1,3 +1,4 @@
+import "./dom.js"
 let div1 = dom.create('div');
 div1.style.width = '100px';
 div1.style.height = '100px';

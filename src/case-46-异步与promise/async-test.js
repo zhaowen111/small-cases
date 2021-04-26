@@ -1,6 +1,3 @@
-const http = require('http');
-const fs = require('fs');
-
 // 最原始的异步执行代码------------------------------
 // http.createServer((req, res) => {
 //     if (req.url == '/') {

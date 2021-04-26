@@ -1,6 +1,5 @@
 let delegateMap = new Map();
-
-window.dom = {
+export default {
   create(tagName) {
     if (tagName.match(/<.*>/)) {
       const container = document.createElement('template');

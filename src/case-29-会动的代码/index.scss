@@ -8,11 +8,12 @@
   padding: 20px;
 }
 #div1 {
+  $length:200px;
   top: 20px;
   left: 100%;
   position: fixed;
-  width: 200px;
-  height: 200px;
+  width: $length;
+  height: $length;
   overflow: hidden;
   border: 1px solid red;
   transition: transform ease-out 0.5s;

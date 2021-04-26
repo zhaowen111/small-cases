@@ -1,3 +1,4 @@
+import "./jquery"
 jquery('#addClass>div')
   .addClass('red')
   .addClass('blue')

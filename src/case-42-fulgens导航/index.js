@@ -1,3 +1,6 @@
+import dom from "../lib/dom"
+import utils from "../lib/utils"
+import "./index.css"
 let containerEle = dom.find('.content')[0]; //所有navArea的容器
 
 let searchContainer = dom.find('.search-container')[0];
@@ -143,8 +146,8 @@ let dataComp = {
     return this.__id__++;
   },
   saveToLocal() {
-    saveData(this._KEY, this._data);
-    saveData(this._ID_KEY, this.__id__);
+    utils.saveData(this._KEY, this._data);
+    utils.saveData(this._ID_KEY, this.__id__);
   },
   addData(title, url, type) {
     if (!this._data.has(type)) {
@@ -180,14 +183,14 @@ let dataComp = {
   },
   deleteData(id, type) {
     delete this._data.get(type)[id];
-    if (isEmptyObject(this._data.get(type))) this._data.delete(type);
+    if (utils.isEmptyObject(this._data.get(type))) this._data.delete(type);
     this.saveToLocal();
   },
   init() {
-    let localData = getData(this._KEY);
+    let localData = utils.getData(this._KEY);
     if (localData !== null) {
       this._data = localData;
-      this.__id__ = getData(this._ID_KEY);
+      this.__id__ = utils.getData(this._ID_KEY);
     } else {
       this._data = new Map();
     }
@@ -214,8 +217,8 @@ dataComp.init();
 
 let contextMenuComp = {
   el: dom.find('.nav-context-menu')[0],
-  editMenuEl: dom.find('.edit-menu', this.el)[0],
-  deleteMenuEl: dom.find('.delete-menu', this.el)[0],
+  editMenuEl: dom.find('.edit-menu')[0],
+  deleteMenuEl: dom.find('.delete-menu')[0],
   navEl: null,
   navData: null,
   opening: false,
