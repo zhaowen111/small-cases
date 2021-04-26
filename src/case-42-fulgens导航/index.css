@@ -156,9 +156,11 @@ body {
   padding: 2rem 1rem;
   border-radius: 0.5rem;
   transition: bottom ease-in 0.3s;
+  visibility: hidden;
 }
 .pop-window.opened {
   bottom: 20%;
+  visibility: visible;
 }
 .pop-window input {
   background: rgb(246, 246, 246);
@@ -288,6 +290,7 @@ body {
   .pop-window.opened {
     top: 20%;
     bottom: unset;
+    visibility: visible;
   }
 }
 @media screen and (max-width:400px){
